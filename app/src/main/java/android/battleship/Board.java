@@ -8,7 +8,7 @@ public class Board {
     public static final int DESTROYERS_NR = 3;
     public static final int SUBMARINES_NR = 4;
 
-    private final static int BOARD_SIZE = 10;
+    public final static int BOARD_SIZE = 10;
 
     private Player player;
     private int numberOfSankShips;
@@ -37,6 +37,10 @@ public class Board {
 
     public int getNumberOfSankShips() {
         return numberOfSankShips;
+    }
+
+    public Field[][] getFields() {
+        return fields;
     }
 
     public void setNumberOfSankShips(int numberOfSankShips) {

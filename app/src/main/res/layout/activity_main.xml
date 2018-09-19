@@ -1,18 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/holo_blue_dark"
+    android:orientation="vertical"
     tools:context="android.battleship.MainActivity">
 
-    <TextView
+    <android.battleship.BoardView
+        android:id="@+id/opponentBoard"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:addStatesFromChildren="false"
+        android:clickable="false"
+        android:clipChildren="false"
+        android:columnWidth="30dp"
+        android:gravity="center"
+        android:numColumns="10"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="4dp"/>
+
+
+    <android.battleship.BoardView
+        android:id="@+id/myBoard"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="false"
+        android:layout_marginEnd="10dp"
+        android:layout_marginLeft="200dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="350dp"
+        android:addStatesFromChildren="false"
+        android:clickable="false"
+        android:clipChildren="false"
+        android:columnWidth="15dp"
+        android:numColumns="10"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="4dp" />
+
+    <Button
+        android:id="@+id/newGameButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="350dp"
+        android:text="new game"
+        android:layout_marginStart="30dp" />
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/sunkShipsOpponentCounter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="420dp"
+        android:text="Opponent's ships sunk: 1"
+        android:layout_marginStart="30dp" />
+
+    <TextView
+        android:id="@+id/sunkShipsMyCounter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="450dp"
+        android:text="My ships sunk: 1"
+        android:layout_marginStart="30dp" />
+</RelativeLayout>
