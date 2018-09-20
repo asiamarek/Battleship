@@ -10,7 +10,7 @@ public class Board {
     final static int BOARD_SIZE = 10;
 
     private Player player;
-    private int numberOfSankShips;
+    private int numberOfSunkenShips;
     private Field[][] fields;
     private Ship[] ships;
 
@@ -18,7 +18,7 @@ public class Board {
 
     Board(Player player) {
         this.player = player;
-        this.numberOfSankShips = 0;
+        this.numberOfSunkenShips = 0;
 
         this.fields = new Field[BOARD_SIZE][BOARD_SIZE];
         for (int i = 0; i < BOARD_SIZE; i++) {
@@ -33,8 +33,8 @@ public class Board {
         }
     }
 
-    public int getNumberOfSankShips() {
-        return numberOfSankShips;
+    public int getnumberOfSunkenShips() {
+        return numberOfSunkenShips;
     }
 
     public Field[][] getFields() {
@@ -48,7 +48,7 @@ public class Board {
                 if(c.getX() == coordinate.getX() && c.getY() == coordinate.getY()){
                     ship.hit();
                     if(ship.isSunk()){
-                        numberOfSankShips++;
+                        numberOfSunkenShips++;
                     }
                     return;
                 }

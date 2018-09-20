@@ -15,8 +15,8 @@ public class Game {
     }
 
     public boolean theEnd(){
-        return (myBoard.getNumberOfSankShips() == Board.numberOfShips() ||
-                opponentsBoard.getNumberOfSankShips() == Board.numberOfShips());
+        return (myBoard.getnumberOfSunkenShips() == Board.numberOfShips() ||
+                opponentsBoard.getnumberOfSunkenShips() == Board.numberOfShips());
     }
 
     public Board getMyBoard() {
