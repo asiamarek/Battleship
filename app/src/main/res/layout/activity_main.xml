@@ -57,7 +57,6 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="420dp"
-        android:text="Opponent's ships sunk: 1"
         android:layout_marginStart="30dp" />
 
     <TextView
@@ -66,6 +65,5 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="450dp"
-        android:text="My ships sunk: 1"
         android:layout_marginStart="30dp" />
 </RelativeLayout>

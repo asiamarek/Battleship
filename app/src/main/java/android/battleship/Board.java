@@ -3,12 +3,11 @@ package android.battleship;
 import java.util.Random;
 
 public class Board {
-    public static final int BATTLESHIPS_NR = 1;
-    public static final int CRUISERS_NR = 2;
-    public static final int DESTROYERS_NR = 3;
-    public static final int SUBMARINES_NR = 4;
-
-    public final static int BOARD_SIZE = 10;
+    final static int BATTLESHIPS_NR = 1;
+    final static int CRUISERS_NR = 2;
+    final static int DESTROYERS_NR = 3;
+    final static int SUBMARINES_NR = 4;
+    final static int BOARD_SIZE = 10;
 
     private Player player;
     private int numberOfSankShips;
@@ -16,7 +15,6 @@ public class Board {
     private Ship[] ships;
 
     private Random rand = new Random();
-
 
     Board(Player player) {
         this.player = player;
@@ -56,7 +54,7 @@ public class Board {
         if (isVertical) {
             int x = rand.nextInt(BOARD_SIZE);
             int y = rand.nextInt(BOARD_SIZE + 1 - shipSize);
-            for (int i = y; i < shipSize; i++) {
+            for (int i = y; i < y + shipSize; i++) {
                 if (fields[x][i].getStatus() != Field.FieldStatus.WATER) {
                     return false;
                 }
@@ -67,7 +65,7 @@ public class Board {
         } else {
             int x = rand.nextInt(BOARD_SIZE + 1 - shipSize);
             int y = rand.nextInt(BOARD_SIZE);
-            for (int i = x; i < shipSize; i++) {
+            for (int i = x; i < x + shipSize; i++) {
                 if (fields[i][y].getStatus() != Field.FieldStatus.WATER) {
                     return false;
                 }
