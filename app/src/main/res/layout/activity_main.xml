@@ -48,7 +48,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="420dp" />
+        android:layout_marginTop="380dp"
+        android:fontFamily="casual" />
 
     <TextView
         android:id="@+id/sunkShipsMyCounter"
@@ -56,15 +57,30 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="450dp" />
+        android:layout_marginTop="410dp"
+        android:fontFamily="casual" />
 
     <Button
         android:id="@+id/newGameButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/opponentBoard"
-        android:layout_alignStart="@+id/opponentBoard"
-        android:layout_alignTop="@+id/myBoard"
+        android:layout_alignBaseline="@+id/menuButton"
+        android:layout_alignBottom="@+id/menuButton"
+        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp"
+        android:layout_toEndOf="@+id/menuButton"
+        android:layout_toRightOf="@+id/menuButton"
         android:onClick="playClickHandler"
-        android:text="new game" />
+        android:text="restart" />
+
+    <Button
+        android:id="@+id/menuButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/sunkShipsMyCounter"
+        android:layout_marginTop="14dp"
+        android:onClick="menuClickHandler"
+        android:text="menu" />
 </RelativeLayout>

@@ -41,7 +41,7 @@ public class Board {
         return fields;
     }
 
-    private void hitShip(Coordinate coordinate){
+    private int hitShip(Coordinate coordinate){
         for(Ship ship : ships){
             Coordinate[] shipCoordinates = ship.getCoordinates();
             for (Coordinate c: shipCoordinates) {
@@ -49,11 +49,13 @@ public class Board {
                     ship.hit();
                     if(ship.isSunk()){
                         numberOfSunkenShips++;
+                        return 2;
                     }
-                    return;
+                    return 1;
                 }
             }
         }
+        return -1;
     }
 
     public int shoot(Coordinate coordinate){
@@ -67,8 +69,7 @@ public class Board {
                 return -1;
             case SHIP:
                 fields[x][y].setStatus(Field.FieldStatus.HIT_SHIP);
-                hitShip(coordinate);
-                return 1;
+                return hitShip(coordinate);
             case WATER:
                 fields[x][y].setStatus(Field.FieldStatus.HIT_WATER);
                 return 0;

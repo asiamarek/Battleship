@@ -1,10 +1,13 @@
 package android.battleship;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private Game currentGame;
@@ -21,8 +24,10 @@ public class MainActivity extends AppCompatActivity {
     public void setTextViews() {
         int opponentsCounter = currentGame.getOpponentsBoard().getnumberOfSunkenShips();
         int myCounter = currentGame.getMyBoard().getnumberOfSunkenShips();
-        sunkShipsOpponentCounterView.setText(String.format("Opponent's sunken ships: %d", opponentsCounter));
-        sunkShipsMyCounterView.setText(String.format("Your sunken ships: %d", myCounter));
+        sunkShipsOpponentCounterView.setText(
+                String.format("Opponent's ships left: %d", Board.numberOfShips() - opponentsCounter));
+        sunkShipsMyCounterView.setText(
+                String.format("Your ships left: %d", Board.numberOfShips() - myCounter));
     }
 
     private void setBoards(){
@@ -49,6 +54,14 @@ public class MainActivity extends AppCompatActivity {
         sunkShipsMyCounterView = findViewById(R.id.sunkShipsMyCounter);
     }
 
+    private void showToast(CharSequence text){
+        Context context = getApplicationContext();
+        int duration = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.setGravity(Gravity.TOP|Gravity.RIGHT, 0, 0);
+        toast.show();
+    }
+
     private void setBoardListeners(){
         opponentsBoardView.addListener(new BoardView.BoardListener() {
             @Override
@@ -57,11 +70,23 @@ public class MainActivity extends AppCompatActivity {
                 if (shotEffect == -1){
                     return;
                 }
+                if(shotEffect == 1){
+                    showToast("Hit !");
+                }
+                if(shotEffect == 2){
+                    showToast("Sunk !");
+                }
                 if(currentGame.theEnd()){
                     setWinnerLayout();
                 }
                 setTextViews();
-                currentGame.getMyBoard().randomShoot();
+                shotEffect = currentGame.getMyBoard().randomShoot();
+                if(shotEffect == 1){
+                    showToast("You've been hit !");
+                }
+                if(shotEffect == 2){
+                    showToast("Your ship sunk !");
+                }
                 if(currentGame.theEnd()){
                     setLooserLayout();
                 }
