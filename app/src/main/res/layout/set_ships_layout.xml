@@ -41,4 +41,16 @@
         android:layout_marginStart="12dp"
         android:onClick="setShipsRandomlyHandler"
         android:text="Random" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/randomSettingButton"
+        android:layout_alignLeft="@+id/settingBoardView"
+        android:layout_alignStart="@+id/settingBoardView"
+        android:layout_marginBottom="42dp"
+        android:fontFamily="casual"
+        android:text="Place your ships"
+        android:textSize="24sp" />
 </RelativeLayout>

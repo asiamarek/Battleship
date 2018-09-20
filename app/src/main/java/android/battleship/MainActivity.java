@@ -21,8 +21,8 @@ public class MainActivity extends AppCompatActivity {
     private void setTextViews() {
         int opponentsCounter = currentGame.getOpponentsBoard().getNumberOfSankShips();
         int myCounter = currentGame.getMyBoard().getNumberOfSankShips();
-        sunkShipsOpponentCounterView.setText(String.format("Opponent's ships sunk: %d", opponentsCounter));
-        sunkShipsMyCounterView.setText(String.format("My ships sunk: %d", myCounter));
+        sunkShipsOpponentCounterView.setText(String.format("Opponent's sunken ships: %d", opponentsCounter));
+        sunkShipsMyCounterView.setText(String.format("Your sunken ships: %d", myCounter));
     }
 
     private void setBoards(){
@@ -77,6 +77,14 @@ public class MainActivity extends AppCompatActivity {
         setMainLayout();
     }
 
+    public void instructionsClickHandler(View view){
+        setInstructionsLayout();
+    }
+
+    public void menuClickHandler(View view){
+        setMenuLayout();
+    }
+
     public void setShipsRandomlyHandler(View view){
         currentGame.getMyBoard().setShipsRandomly();
         startBattleButton.setEnabled(true);
@@ -93,6 +101,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void setLooserLayout(){
         setContentView(R.layout.looser);
+    }
+
+    private void setInstructionsLayout(){
+        setContentView(R.layout.instructions);
     }
 
     private void setSettingShipsLayout(){
