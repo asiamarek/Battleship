@@ -35,6 +35,11 @@ public class MainActivity extends AppCompatActivity {
         setBoardListeners();
     }
 
+    private void setSettingBoard(){
+        settingBoardView = findViewById(R.id.settingBoardView);
+        settingBoardView.setBoard(currentGame.getMyBoard());
+    }
+
     private void setVariables() {
         sunkShipsOpponentCounterView = findViewById(R.id.sunkShipsOpponentCounter);
         sunkShipsMyCounterView = findViewById(R.id.sunkShipsMyCounter);
@@ -61,7 +66,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void playClickHandler(View view){
+        setSettingShipsLayout();
+    }
+
+    public void startBattleClickHandler(View view){
         setMainLayout();
+    }
+
+    public void setShipsRandomlyHandler(View view){
+        currentGame.getMyBoard().setShipsRandomly();
     }
 
     private void setMenuLayout(){
@@ -79,14 +92,13 @@ public class MainActivity extends AppCompatActivity {
     private void setSettingShipsLayout(){
         setContentView(R.layout.set_ships_layout);
         currentGame = new Game();
-        setBoards();
+        setSettingBoard();
     }
 
     private void setMainLayout(){
         setContentView(R.layout.activity_main);
-        currentGame = new Game(); //tu juz nie jak skoncze
+        setBoards();
         setVariables();
-        setBoards(); //tu juz nie jak skoncze
         setTextViews();
     }
 

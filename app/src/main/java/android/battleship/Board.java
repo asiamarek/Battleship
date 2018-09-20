@@ -119,8 +119,14 @@ public class Board {
         return true;
     }
 
-    private void setShipsRandomly() {
+    public void setShipsRandomly() {
         int shipCounter = 0;
+
+        for(int i = 0; i < BOARD_SIZE; i++){
+            for(int j = 0; j < BOARD_SIZE; j++){
+                fields[i][j].setStatus(Field.FieldStatus.WATER);
+            }
+        }
 
         for (int i = 0; i < BATTLESHIPS_NR; i++) {
             Coordinate[] coordinates = new Coordinate[Battleship.BATTLESHIP_SIZE];

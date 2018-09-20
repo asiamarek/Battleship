@@ -27,5 +27,18 @@
         android:layout_marginEnd="40dp"
         android:layout_marginRight="40dp"
         android:text="Start the battle !"
-        android:onClick="playClickHandler" />
+        android:onClick="startBattleClickHandler" />
+
+    <Button
+        android:id="@+id/randomSettingButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/startBattleButton"
+        android:layout_alignBottom="@+id/startBattleButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
+        android:onClick="setShipsRandomlyHandler"
+        android:text="Random" />
 </RelativeLayout>
