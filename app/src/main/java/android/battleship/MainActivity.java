@@ -3,6 +3,7 @@ package android.battleship;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -14,6 +15,8 @@ public class MainActivity extends AppCompatActivity {
     private BoardView myBoardView;
     private BoardView opponentsBoardView;
     private BoardView settingBoardView;
+
+    private Button startBattleButton;
 
     private void setTextViews() {
         int opponentsCounter = currentGame.getOpponentsBoard().getNumberOfSankShips();
@@ -38,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private void setSettingBoard(){
         settingBoardView = findViewById(R.id.settingBoardView);
         settingBoardView.setBoard(currentGame.getMyBoard());
+        settingBoardView.setMine(true);
     }
 
     private void setVariables() {
@@ -60,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 if(currentGame.theEnd()){
                     setLooserLayout();
                 }
-                opponentsBoardView.invalidate(); // ?????? nie dziala
+                myBoardView.invalidate();
             }
         });
     }
@@ -75,6 +79,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void setShipsRandomlyHandler(View view){
         currentGame.getMyBoard().setShipsRandomly();
+        startBattleButton.setEnabled(true);
+        settingBoardView.invalidate();
     }
 
     private void setMenuLayout(){
@@ -93,6 +99,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.set_ships_layout);
         currentGame = new Game();
         setSettingBoard();
+        startBattleButton = findViewById(R.id.startBattleButton);
+        startBattleButton.setEnabled(false);
     }
 
     private void setMainLayout(){

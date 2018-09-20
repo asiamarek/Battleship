@@ -74,10 +74,6 @@ public class BoardView extends View {
         }
     }
 
-    public void removeListener(BoardListener listener) {
-        listeners.remove(listener);
-    }
-
     private void notifyBoardListeners(Coordinate coordinate) {
         for (BoardListener listener : listeners) {
             listener.onTouch(coordinate);
