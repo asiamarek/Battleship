@@ -59,7 +59,7 @@ public class BoardView extends View {
     public boolean onTouchEvent(MotionEvent e) {
         switch (e.getAction()) {
             case MotionEvent.ACTION_UP:
-                if(!isMine)
+                if(isMine)
                     break;
                 Coordinate coordinate = findPlaceOnBoard(e.getX(), e.getY());
                 invalidate();

@@ -41,11 +41,53 @@ public class Board {
         return fields;
     }
 
-    public void setNumberOfSankShips(int numberOfSankShips) {
-        this.numberOfSankShips = numberOfSankShips;
+    private void hitShip(Coordinate coordinate){
+        for(Ship ship : ships){
+            Coordinate[] shipCoordinates = ship.getCoordinates();
+            for (Coordinate c: shipCoordinates) {
+                if(c.getX() == coordinate.getX() && c.getY() == coordinate.getY()){
+                    ship.hit();
+                    if(ship.isSunk()){
+                        numberOfSankShips++;
+                    }
+                    return;
+                }
+            }
+        }
     }
 
-    private static int numberOfShips(){
+    public int shoot(Coordinate coordinate){
+        int x = coordinate.getX();
+        int y = coordinate.getY();
+
+        switch (fields[x][y].getStatus()){
+            case HIT_SHIP:
+                return -1;
+            case HIT_WATER:
+                return -1;
+            case SHIP:
+                fields[x][y].setStatus(Field.FieldStatus.HIT_SHIP);
+                hitShip(coordinate);
+                return 1;
+            case WATER:
+                fields[x][y].setStatus(Field.FieldStatus.HIT_WATER);
+                return 0;
+        }
+        return -1;
+    }
+
+    public int randomShoot(){
+        while(true){
+            int randX = rand.nextInt(BOARD_SIZE);
+            int randY = rand.nextInt(BOARD_SIZE);
+            int shotEffect = shoot(new Coordinate(randX, randY));
+            if(shotEffect != -1)
+                return shotEffect;
+
+        }
+    }
+
+    public static int numberOfShips(){
         return BATTLESHIPS_NR + CRUISERS_NR + DESTROYERS_NR + SUBMARINES_NR;
     }
 

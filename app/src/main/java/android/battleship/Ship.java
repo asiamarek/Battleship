@@ -2,21 +2,25 @@ package android.battleship;
 
 public class Ship {
     private final int size;
-    private boolean sunk;
+    private int hits;
     private Coordinate[] coordinates;
 
     Ship(int size, Coordinate[] coordinates){
         this.size = size;
-        this.sunk = false;
+        this.hits = 0;
         this.coordinates = coordinates;
     }
 
-    public boolean isSunk() {
-        return sunk;
+    public Coordinate[] getCoordinates() {
+        return coordinates;
     }
 
-    public void setSunk(boolean sunk) {
-        this.sunk = sunk;
+    public boolean isSunk() {
+        return (hits == size);
+    }
+
+    public void hit(){
+        hits++;
     }
 
     public int getSize() {
