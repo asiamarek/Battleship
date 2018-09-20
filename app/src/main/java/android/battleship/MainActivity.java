@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         myBoardView.setBoard(currentGame.getMyBoard());
         opponentsBoardView.setBoard(currentGame.getOpponentsBoard());
 
-        setBoardListiners();
+        setBoardListeners();
     }
 
     private void setVariables() {
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         sunkShipsMyCounterView = findViewById(R.id.sunkShipsMyCounter);
     }
 
-    private void setBoardListiners(){
+    private void setBoardListeners(){
         opponentsBoardView.addListener(new BoardView.BoardListener() {
             @Override
             public void onTouch(Coordinate coordinate) {

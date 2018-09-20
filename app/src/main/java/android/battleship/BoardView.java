@@ -63,7 +63,7 @@ public class BoardView extends View {
                     break;
                 Coordinate coordinate = findPlaceOnBoard(e.getX(), e.getY());
                 invalidate();
-                notifyBoardListiners(coordinate);
+                notifyBoardListeners(coordinate);
         }
         return true;
     }
@@ -78,7 +78,7 @@ public class BoardView extends View {
         listeners.remove(listener);
     }
 
-    private void notifyBoardListiners(Coordinate coordinate) {
+    private void notifyBoardListeners(Coordinate coordinate) {
         for (BoardListener listener : listeners) {
             listener.onTouch(coordinate);
         }
