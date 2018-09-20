@@ -67,7 +67,16 @@ public class Board {
                 return -1;
             case HIT_WATER:
                 return -1;
-            case SHIP:
+            case BATTLESHIP:
+                fields[x][y].setStatus(Field.FieldStatus.HIT_SHIP);
+                return hitShip(coordinate);
+            case CRUISER:
+                fields[x][y].setStatus(Field.FieldStatus.HIT_SHIP);
+                return hitShip(coordinate);
+            case DESTROYER:
+                fields[x][y].setStatus(Field.FieldStatus.HIT_SHIP);
+                return hitShip(coordinate);
+            case SUBMARINE:
                 fields[x][y].setStatus(Field.FieldStatus.HIT_SHIP);
                 return hitShip(coordinate);
             case WATER:
@@ -134,7 +143,7 @@ public class Board {
             while (!getRandomShipCoordinates(Battleship.BATTLESHIP_SIZE, coordinates)){}
 
             for (Coordinate coordinate : coordinates) {
-                fields[coordinate.getX()][coordinate.getY()].setStatus(Field.FieldStatus.SHIP);
+                fields[coordinate.getX()][coordinate.getY()].setStatus(Field.FieldStatus.BATTLESHIP);
             }
             ships[shipCounter] = new Battleship(coordinates);
             shipCounter++;
@@ -145,7 +154,7 @@ public class Board {
             while (!getRandomShipCoordinates(Cruiser.CRUISER_SIZE, coordinates)){}
 
             for (Coordinate coordinate : coordinates) {
-                fields[coordinate.getX()][coordinate.getY()].setStatus(Field.FieldStatus.SHIP);
+                fields[coordinate.getX()][coordinate.getY()].setStatus(Field.FieldStatus.CRUISER);
             }
             ships[shipCounter] = new Cruiser(coordinates);
             shipCounter++;
@@ -156,7 +165,7 @@ public class Board {
             while (!getRandomShipCoordinates(Destroyer.DESTROYER_SIZE, coordinates)){}
 
             for (Coordinate coordinate : coordinates) {
-                fields[coordinate.getX()][coordinate.getY()].setStatus(Field.FieldStatus.SHIP);
+                fields[coordinate.getX()][coordinate.getY()].setStatus(Field.FieldStatus.DESTROYER);
             }
             ships[shipCounter] = new Destroyer(coordinates);
             shipCounter++;
@@ -167,7 +176,7 @@ public class Board {
             while (!getRandomShipCoordinates(Submarine.SUBMARINE_SIZE, coordinates)){}
 
             for (Coordinate coordinate : coordinates) {
-                fields[coordinate.getX()][coordinate.getY()].setStatus(Field.FieldStatus.SHIP);
+                fields[coordinate.getX()][coordinate.getY()].setStatus(Field.FieldStatus.SUBMARINE);
             }
             ships[shipCounter] = new Submarine(coordinates);
             shipCounter++;

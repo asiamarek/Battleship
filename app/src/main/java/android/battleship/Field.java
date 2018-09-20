@@ -1,7 +1,7 @@
 package android.battleship;
 
 public class Field {
-    public enum FieldStatus {WATER, SHIP, HIT_WATER, HIT_SHIP}
+    public enum FieldStatus {WATER, HIT_WATER, HIT_SHIP, BATTLESHIP, CRUISER, DESTROYER, SUBMARINE}
 
     private Coordinate coordinate;
     private FieldStatus status;

@@ -19,6 +19,9 @@ public class BoardView extends View {
 
     private Paint whitePaint;
     private Paint blackPaint;
+    private Paint blackPaintTwo;
+    private Paint blackPaintThree;
+    private Paint blackPaintFour;
     private Paint redPaint;
     private Paint greyPaint;
     private Paint transparentPaint;
@@ -110,10 +113,22 @@ public class BoardView extends View {
                 for(int j = 0; j < BOARD_SIZE; j++){
                     Field.FieldStatus fieldStatus = boardFields[i][j].getStatus();
                     switch (fieldStatus){
-                        case SHIP:  if(isMine){
+                        case BATTLESHIP:  if(isMine){
                                         drawField(canvas, new Coordinate(i,j), blackPaint);
                                     }
                                     break;
+                        case CRUISER:  if(isMine){
+                            drawField(canvas, new Coordinate(i,j), blackPaintTwo);
+                        }
+                            break;
+                        case DESTROYER:  if(isMine){
+                            drawField(canvas, new Coordinate(i,j), blackPaintThree);
+                        }
+                            break;
+                        case SUBMARINE:  if(isMine){
+                            drawField(canvas, new Coordinate(i,j), blackPaintFour);
+                        }
+                            break;
                         case HIT_SHIP:  drawField(canvas, new Coordinate(i,j), redPaint);
                                         break;
                         case HIT_WATER: drawField(canvas, new Coordinate(i,j), greyPaint);
@@ -130,6 +145,15 @@ public class BoardView extends View {
 
         blackPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         blackPaint.setColor(Color.rgb(0, 0, 0));
+
+        blackPaintTwo = new Paint(Paint.ANTI_ALIAS_FLAG);
+        blackPaintTwo.setColor(Color.rgb(15, 15, 15));
+
+        blackPaintThree = new Paint(Paint.ANTI_ALIAS_FLAG);
+        blackPaintThree.setColor(Color.rgb(25, 25, 25));
+
+        blackPaintFour = new Paint(Paint.ANTI_ALIAS_FLAG);
+        blackPaintFour.setColor(Color.rgb(30, 30, 30));
 
         redPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         redPaint.setColor(Color.rgb(201, 6, 45));
