@@ -49,7 +49,8 @@
         android:layout_marginLeft="25dp"
         android:layout_marginStart="25dp"
         android:layout_marginTop="380dp"
-        android:fontFamily="casual" />
+        android:fontFamily="casual"
+        android:text="default" />
 
     <TextView
         android:id="@+id/sunkShipsMyCounter"
@@ -58,7 +59,8 @@
         android:layout_marginLeft="25dp"
         android:layout_marginStart="25dp"
         android:layout_marginTop="410dp"
-        android:fontFamily="casual" />
+        android:fontFamily="casual"
+        android:text="default" />
 
     <Button
         android:id="@+id/newGameButton"

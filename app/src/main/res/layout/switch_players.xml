@@ -11,18 +11,30 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="19dp"
-        android:onClick="playClickHandler"
-        android:text="another one?" />
+        android:layout_marginBottom="102dp"
+        android:onClick="switchPlayerClickHandler"
+        android:text="go!" />
 
     <TextView
         android:id="@+id/playerTurnTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_above="@+id/switchPlayerButton"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="137dp"
+        android:layout_marginBottom="25dp"
         android:fontFamily="casual"
-        android:text="You won!"
-        android:textSize="50sp" />
+        android:text="Player's one turn"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/shotResultTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/switchPlayerButton"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="119dp"
+        android:fontFamily="casual"
+        android:text="Hit !"
+        android:textSize="36sp" />
 </RelativeLayout>

@@ -47,7 +47,7 @@ public class BoardView extends View {
         this.board = board;
     }
 
-    public void setMine(boolean isMine){
+    public void setMine(boolean isMine) {
         this.isMine = isMine;
     }
 
@@ -62,7 +62,7 @@ public class BoardView extends View {
     public boolean onTouchEvent(MotionEvent e) {
         switch (e.getAction()) {
             case MotionEvent.ACTION_UP:
-                if(isMine)
+                if (isMine)
                     break;
                 Coordinate coordinate = findPlaceOnBoard(e.getX(), e.getY());
                 invalidate();
@@ -94,7 +94,7 @@ public class BoardView extends View {
         return new Coordinate(fieldX, fieldY);
     }
 
-    private float getMeasuredFieldSize(){
+    private float getMeasuredFieldSize() {
         return getMeasuredHeight() / BOARD_SIZE;
     }
 
@@ -107,32 +107,38 @@ public class BoardView extends View {
     }
 
     private void drawBoard(Canvas canvas) {
-        if(board != null){
+        if (board != null) {
             Field[][] boardFields = board.getFields();
-            for(int i = 0; i < BOARD_SIZE; i++){
-                for(int j = 0; j < BOARD_SIZE; j++){
+            for (int i = 0; i < BOARD_SIZE; i++) {
+                for (int j = 0; j < BOARD_SIZE; j++) {
                     Field.FieldStatus fieldStatus = boardFields[i][j].getStatus();
-                    switch (fieldStatus){
-                        case BATTLESHIP:  if(isMine){
-                                        drawField(canvas, new Coordinate(i,j), blackPaint);
-                                    }
-                                    break;
-                        case CRUISER:  if(isMine){
-                            drawField(canvas, new Coordinate(i,j), blackPaintTwo);
-                        }
+                    switch (fieldStatus) {
+                        case BATTLESHIP:
+                            if (isMine) {
+                                drawField(canvas, new Coordinate(i, j), blackPaint);
+                            }
                             break;
-                        case DESTROYER:  if(isMine){
-                            drawField(canvas, new Coordinate(i,j), blackPaintThree);
-                        }
+                        case CRUISER:
+                            if (isMine) {
+                                drawField(canvas, new Coordinate(i, j), blackPaintTwo);
+                            }
                             break;
-                        case SUBMARINE:  if(isMine){
-                            drawField(canvas, new Coordinate(i,j), blackPaintFour);
-                        }
+                        case DESTROYER:
+                            if (isMine) {
+                                drawField(canvas, new Coordinate(i, j), blackPaintThree);
+                            }
                             break;
-                        case HIT_SHIP:  drawField(canvas, new Coordinate(i,j), redPaint);
-                                        break;
-                        case HIT_WATER: drawField(canvas, new Coordinate(i,j), greyPaint);
-                                        break;
+                        case SUBMARINE:
+                            if (isMine) {
+                                drawField(canvas, new Coordinate(i, j), blackPaintFour);
+                            }
+                            break;
+                        case HIT_SHIP:
+                            drawField(canvas, new Coordinate(i, j), redPaint);
+                            break;
+                        case HIT_WATER:
+                            drawField(canvas, new Coordinate(i, j), greyPaint);
+                            break;
                     }
                 }
             }
